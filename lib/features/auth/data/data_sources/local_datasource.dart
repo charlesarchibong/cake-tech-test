@@ -18,24 +18,24 @@ class LocalDatasourceImpl implements LocalDatasource {
 
   @override
   Future<void> setPinCodeLength(bool isCodeSix) async {
-    await sharedPreferences.setBool(_pinCodeLength, isCodeSix);
+    await sharedPreferences.setBool(pinCodeLengthKey, isCodeSix);
   }
 
   @override
   Future<void> savePin(String pin) async {
-    await sharedPreferences.setString(_pin, pin);
+    await sharedPreferences.setString(pinKey, pin);
   }
 
   @override
   Future<String?> getPin() async {
-    return sharedPreferences.getString(_pin);
+    return sharedPreferences.getString(pinKey);
   }
 
   @override
   Future<bool> isPinCodeLengthSix() async {
-    return sharedPreferences.getBool(_pinCodeLength) ?? false;
+    return sharedPreferences.getBool(pinCodeLengthKey) ?? false;
   }
 }
 
-const _pinCodeLength = 'pinCodeLength';
-const _pin = 'pin';
+const pinCodeLengthKey = 'pinCodeLength';
+const pinKey = 'pin';
