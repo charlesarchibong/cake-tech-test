@@ -4,6 +4,7 @@ import 'package:cake_tech_test/features/auth/presentation/providers/create_pin_p
 import 'package:cake_tech_test/features/auth/presentation/widgets/pin_code_widget.dart';
 import 'package:cake_tech_test/features/auth/presentation/widgets/pin_keyboard_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 
 class CreatePinPage extends StatefulWidget {
@@ -60,16 +61,15 @@ class _CreatePinPageState extends State<CreatePinPage> {
               ),
             ),
           ),
-          const SizedBox(
-            width: 10,
-          )
+          const Gap(10)
         ],
       ),
       body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              child: Column(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const Gap(80),
+              Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
@@ -79,33 +79,33 @@ class _CreatePinPageState extends State<CreatePinPage> {
                       color: Color(0xff859DBB),
                     ),
                   ),
-                  const SizedBox(height: 40),
+                  const Gap(40),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       for (var i = 0; i < (createPinProvider.isSixCode ? 6 : 4); i++)
                         Row(
                           children: [
-                            const SizedBox(width: 5.0),
+                            const Gap(5.0),
                             PinCodeWidget(
                               filled: createPinProvider.pins.length >= (i + 1),
                             ),
-                            const SizedBox(width: 5.0),
+                            const Gap(5.0),
                           ],
                         ),
                     ],
                   ),
                 ],
               ),
-            ),
-            const SizedBox(height: 50),
-            PinKeyboardWidget(
-              onPressed: (index) {
-                createPinProvider.keysPressed(index, context);
-              },
-            ),
-            const SizedBox(height: 40),
-          ],
+              const Gap(80),
+              PinKeyboardWidget(
+                onPressed: (index) {
+                  createPinProvider.keysPressed(index, context);
+                },
+              ),
+              const Gap(40),
+            ],
+          ),
         ),
       ),
     );
