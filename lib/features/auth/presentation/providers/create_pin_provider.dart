@@ -18,6 +18,11 @@ class CreatePinProvider extends ChangeNotifier {
 
   var _pin = '';
 
+  void setConfirmPin(bool value) {
+    _confirmPin = value;
+    notifyListeners();
+  }
+
   void setIsSixCode() async {
     _isSixCode = !_isSixCode;
     await authRepository.setPinCodeLength(_isSixCode);

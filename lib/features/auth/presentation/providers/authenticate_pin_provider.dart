@@ -9,7 +9,9 @@ class AuthenticatePinProvider extends ChangeNotifier {
   AuthenticatePinProvider({
     required this.authRepository,
   }) {
-    initialize();
+    if (!TestUtil.isTest) {
+      initialize();
+    }
   }
 
   final _pins = <int>[];

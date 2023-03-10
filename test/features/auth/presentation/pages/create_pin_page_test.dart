@@ -30,6 +30,17 @@ void main() {
       );
     });
 
+    testGoldens('confirm pin', (tester) async {
+      createPinProvider.setConfirmPin(true);
+      await tester.pumpCreatePinPage(createPinProvider);
+
+      await multiScreenGolden(
+        tester,
+        'create_pin_page_confirm_pin',
+        autoHeight: true,
+      );
+    });
+
     testGoldens('pin filled', (tester) async {
       createPinProvider.pins.addAll([1, 2, 3, 4]);
       await tester.pumpCreatePinPage(createPinProvider);
