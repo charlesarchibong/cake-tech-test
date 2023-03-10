@@ -58,6 +58,7 @@ dev_dependencies:
   build_runner: ^2.3.3
   injectable_generator: ^2.1.4
   mockito: ^5.3.2
+  golden_toolkit: ^0.15.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
